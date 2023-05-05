@@ -10,7 +10,7 @@
     <main>
       <p>This is the Charitable Donations from Tempe Arizona. We pride ourselves in our effort to make donations to the community and spread lots of love.</p>
       <h2>Make a Donation</h2>
-      <form action="https://your-payment-processor.com" method="post">
+      <form id="donation-form" action="" method="post">
         <label for="name">Name:</label>
         <input type="text" name="name" id="name" required><br>
         <label for="email">Email:</label>
@@ -20,5 +20,37 @@
         <button type="submit">Donate</button>
       </form>
     </main>
+    
+    <div id="transaction-page" style="display: none;">
+      <h2>Transaction Page</h2>
+      <p>Please enter your credit/debit card information below to complete the transaction:</p>
+      <form id="transaction-form" action="" method="post">
+        <label for="card-number">Card Number:</label>
+        <input type="text" name="card-number" id="card-number" required><br>
+        <label for="card-expiry">Card Expiry:</label>
+        <input type="text" name="card-expiry" id="card-expiry" required><br>
+        <label for="cvv">CVV:</label>
+        <input type="text" name="cvv" id="cvv" required><br>
+        <button type="submit">Submit</button>
+      </form>
+    </div>
+    
+    <script>
+      var donationForm = document.getElementById("donation-form");
+      var transactionPage = document.getElementById("transaction-page");
+
+      donationForm.addEventListener("submit", function(event) {
+        event.preventDefault();
+        transactionPage.style.display = "block";
+      });
+
+      var transactionForm = document.getElementById("transaction-form");
+
+      transactionForm.addEventListener("submit", function(event) {
+        event.preventDefault();
+        alert("Transaction successful!");
+        location.reload();
+      });
+    </script>
   </body>
 </html>
